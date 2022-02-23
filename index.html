@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .exercise_1{                                    /* 1 задание */
+            width: 300px;
+            height: 30px;
+            font-size: 110%;
+        }
+        #opn{                                           /* 2 задание */
+            width: 160px;
+            height: 30px;
+            font-size: 110%;
+        }
+        #cls{
+            width: 160px;
+            height: 30px;
+            font-size: 110%;
+        }
+        #exercise_2{
+            z-index: 1000;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(216, 216, 216);
+            position:fixed;
+            padding-top: 25%;
+            padding-left: 40%;
+            top: 0%;
+            display: none;
+        }
+         
+        #traffic_lights{                                /* 4 задание*/
+            display: flex;
+            margin: 40px;
+            height: 120px;
+            width: 360px;
+            background-color: rgb(189, 189, 189);
+            border-radius: 10px;
+            border: solid 2px rgb(61, 61, 61);
+        }
+        #green{
+            margin: 10px;
+            border-radius: 50%;
+            background-color: green;
+            height: 100px;
+            width: 100px;
+        } 
+        #red{
+            margin: 10px;
+            border-radius: 50%;
+            background-color: gray;
+            height: 100px;
+            width: 100px;
+        }   
+        #yellow{
+            margin: 10px;
+            border-radius: 50%;
+            background-color: gray;
+            height: 100px;
+            width: 100px;
+        }
+        #next{
+            height: 100px;
+            width: 140px;
+            margin: 50px;
+            font-size: 200%;
+            border-radius: 10px;
+            border: solid 2px rgb(75, 74, 74);
+        }   
+        #book_ol{                                            /* задание 5 */
+        background-color: rgb(182, 173, 97);
+    }
+    .li_book{
+        height: 40px;
+        font-size: 150%;
+    }
+    
+    .text{                                                   /* задание 6 */
+        width: 200px;
+        height: 50px;
+        font-size: 150%;
+        text-align: center;
+        line-height: 2;                                   /* межстрочный интервал */
+        background-color: rgb(157, 168, 168);        
+        /* transition: 0.5s; */
+        /* margin-top: 16px;
+        margin-bottom: 16px; */
+        position: absolute;
+        border-radius: 15px;
+    }
+    #text1{
+        /* display: none; */
+        top: 5px;
+    }
+    #text2{
+        /* display: none; */
+        top: 100px;
+    }
+    #text3{
+        /* display: none; */
+        top: 200px;
+    }
+    .btn{
+        position: absolute;
+        width: 200px;
+        height: 70px;
+        font-size: 200%;
+    }
+    .buttonWrapper{
+        position: relative;
+        width: 200px;
+        height: 400px;
+        margin: 10px;
+    }
+    #button1{
+        top: 5px;
+    }
+    #button2{
+        top: 100px;
+    }
+    #button3{
+        top: 200px;
+    }
+    #pointer{
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        left: 95px;
+        bottom: -10px;
+        transform: rotate(45deg);
+        background-color: rgb(157, 168, 168);
+    }
+    .pc_table{                                              /* задание 7 */
+        font-size: 200%;
+    }
+    .bold:hover{
+        font-weight: 600;
+        transition: 0.1s;
+    } 
+    
+    .hiddenDirectories{                                
+        display: none;
+    }
+
+    #framedText{                                    /* задание 8 */
+        position: absolute;
+        width: 400px;
+        min-width: 400px;
+        height: 200px;
+        min-height: 200px;
+        background-color: rgb(219, 191, 191);
+        margin: 40px;
+        padding: 40px;
+        border: solid 3px brown ;
+        font-size: 150%;
+    }
+    #triangle{
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        height: 2px;
+        width: 2px;
+        border: 15px solid transparent;
+        border-right: 15px solid brown;
+        border-bottom: 15px solid brown;
+    }
+    .box{
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+    }
+    </style>
+</head>
+<body>
+    <!-- задание 1 -->
+    <h3>
+        Задание 1 <br>
+        Создать html-страницу для ввода имени пользователя. Необходимо проверять каждый символ, который вводит пользователь. 
+        Если он ввел цифру, то не отображать ее в input.
+    </h3>
+    <label for="">Enter your names (name can't contain digits)
+        <br>
+        <input  class="exercise_1" type="text" onkeyup="this.value = this.value.replace(/[\d]/g,'');">
+    </label>
+
+    <!-- задание 2 -->
+    <h3>
+        Задание 2 <br>
+        Создать html-страницу с кнопкой Открыть и модальным окном. На модальном окне должен быть текст и кнопка Закрыть.
+        Изначально модальное окно не отображается. При клике на кнопку Открыть появляется модальное окно, на кнопку 
+        Закрыть –  исчезает.
+    </h3>
+    <input type="button" id="opn" value="Open">
+    <div id="exercise_2">
+        <p>Hello from modal window!</p>
+        <input type="button" id="cls" value="Close">
+    </div>
+    <script>
+        opn.onclick=function(){                                 //функция кнопки open
+        let op = document.getElementById('exercise_2');         //обращаемся к html - элементу по id
+        op.style.display = 'block';                             //меняем стиль html - элемента
+        }
+        cls.onclick=function(){                                 //функция кнопки close
+        let cls = document.getElementById('exercise_2');
+        cls.style.display = 'none';  
+        }
+    </script>
+
+<!-- Задание 3
+Создать html-страницу с футбольным полем, которое занимает всю ширину и высоту экрана, и мячом размером 100 на 100
+пикселей.
+Сделать так, чтобы при клике мышкой по полю, мяч плавно перемещался на место клика. Учтите: необходимо, чтобы центр
+мяча останавливался именно там, где был совершен клик мышкой. Также предусмотрите, чтобы мяч не выходил за границы поля. -->
+
+<!-- отдельный файл footboll.html -->
+
+<!-- задание 4 -->
+<h3>
+    Задание 4 <br>
+    Создать html-страницу со светофором и кнопкой, которая переключает светофор на следующий цвет.
+</h3>
+<div style="display: flex;">
+    <div id="traffic_lights">
+        <div id="green"></div>
+        <div id="yellow"></div>
+        <div id="red"></div>
+    </div>
+    <input type="button" id="next" value="Next">
+    <script>
+        next.onclick=function(){
+            let one = window.getComputedStyle(document.querySelector('#green')).backgroundColor     //проверяем какой цвет установлен в элементе #green
+            let two = window.getComputedStyle(document.querySelector('#yellow')).backgroundColor    //проверяем какой цвет установлен в элементе #yellow
+            let tree = window.getComputedStyle(document.querySelector('#red')).backgroundColor      //проверяем какой цвет установлен в элементе #red
+            if (one == 'rgb(0, 128, 0)') {                                              //если зеленый, меняем цвета
+                document.getElementById('green').style.backgroundColor = 'gray' ;
+                document.getElementById('yellow').style.backgroundColor = 'yellow' ;
+                document.getElementById('red').style.backgroundColor = 'gray' ;
+            } else if (two == 'rgb(255, 255, 0)') {                                     //иначе, если желтый, меняем цвета
+                document.getElementById('green').style.backgroundColor = 'gray' ;
+                document.getElementById('yellow').style.backgroundColor = 'gray' ;
+                document.getElementById('red').style.backgroundColor = 'red' ;
+            } else if (tree == 'rgb(255, 0, 0)') {                                      //иначе, если красный, меняем цвета
+                document.getElementById('green').style.backgroundColor = 'green' ;
+                document.getElementById('yellow').style.backgroundColor = 'gray' ;
+                document.getElementById('red').style.backgroundColor = 'gray' ;
+            }
+        }
+    </script>        
+</div> 
+
+<!-- задание 5 -->
+<h3>
+    Задание 5 <br>
+    Создать html-страницу со списком книг. При щелчке на книгу, цвет фона должен меняться на оранжевый.
+    Учтите, что при повторном щелчке на другую книгу, предыдущей – необходимо возвращать прежний цвет.
+</h3>
+<ol id="book_ol">
+    <li class="li_book" id="book 1" onclick="chooseABook(event, 1)">книга 1 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 2" onclick="chooseABook(event, 2)">книга 2 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 3" onclick="chooseABook(event, 3)">книга 3 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 4" onclick="chooseABook(event, 4)">книга 4 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 5" onclick="chooseABook(event, 5)">книга 5 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 6" onclick="chooseABook(event, 6)">книга 6 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 7" onclick="chooseABook(event, 7)">книга 7 "Lorem ipsum dolor sit amet."</li>
+    <li class="li_book" id="book 8" onclick="chooseABook(event, 8)">книга 8 "Lorem ipsum dolor sit amet."</li>
+</ol>
+<script>
+    function chooseABook(e, number) {
+        const numberOfLines = document.querySelectorAll('li.li_book');      //находим колличество строк книг в списке
+        for (let i = 0; i < numberOfLines.length; i++) {                    //каждой строке возвращаем цвет фона родительского элемента
+            let takeEverything = document.getElementById(`book ${i+1}`);    //получаем доступ к элементу с нужным id 
+            takeEverything.style= `background-color: inherit;`;             //меняем цвет выбраного элемента
+        }
+        
+        let takeEverything = document.getElementById(`book ${number}`);    //получаем доступ к элементу с нужным id 
+        takeEverything.style= `background-color: orange;`;                  //меняем цвет выбраного элемента
+    }
+</script>
+
+<!-- задание 6 -->
+<h3>
+    Задание 6 <br>
+    Создать html-страницу с несколькими кнопками. При наведении на кнопку, должна появляться подсказка с текстом. 
+    По умолчанию – подсказка появляется сверху от кнопки. Но если она не помещается сверху от кнопки, тогда отображается снизу.
+</h3>
+<div style="display: flex;">
+
+    <div class="buttonWrapper">
+        <div id="text1" class="text">Tool tipe 1
+            <div id="pointer"></div>
+        </div>
+        <input type="button" id="button1" class="btn" value="button 1" onmouseenter="hoverOverTheButton(event, 1)" onmouseleave="removeTheMouse(event, 1)" >
+    </div>
+
+    <div class="buttonWrapper">
+        <div id="text2" class="text">Tool tipe 2
+            <div id="pointer"></div>
+        </div>
+        <input type="button" id="button2" class="btn" value="button 2" onmouseenter="hoverOverTheButton(event, 2)" onmouseleave="removeTheMouse(event, 2)" >
+    </div>
+
+    <div class="buttonWrapper">
+        <div id="text3" class="text">Tool tipe 3
+            <div id="pointer"></div>
+        </div>
+        <input type="button" id="button3" class="btn" value="button 3" onmouseenter="hoverOverTheButton(event, 3)" onmouseleave="removeTheMouse(event, 3)" > 
+    </div>
+</div>
+<script>
+    function hoverOverTheButton(e, number){                                             //функция при наведении указателя мыши на кнопку
+        let aHintAppears = document.getElementById(`text${number}`);                    //получаем доступ к элементу с нужным id (подсказка)
+        // aHintAppears.style = `display: block;`;                                      //меняем стиль подсказки
+    
+        let promptButton = document.getElementById(`button${number}`);                  //получаем доступ к элементу с нужным id (кнопка)
+        let styleButton = getComputedStyle(promptButton);                               //обращаемся к стилям кнопки
+        let findingTheButton = +styleButton.top.replace(/[^\d]/g, '')                   //находим расстояние от верха родительского блока до кнопки    
+
+        let footnote = document.getElementById(`pointer`);                              //получаем доступ к элементу с нужным id (сноска)
+        let stylePointer = getComputedStyle(footnote);                                  //обращаемся к стилям сноски
+   
+        if (findingTheButton >= 90) {                                                   //проверяем помещается ли подсказка сверху от кнопки или нет
+            aHintAppears.style = `top: ${findingTheButton - 65}px;`;
+            }
+             else {
+                aHintAppears.style = `top: ${findingTheButton + 85}px;`; 
+                footnote.style = `bottom: 40px;`                                 
+            }                        
+        }     
+    
+    function removeTheMouse(e, number){                                                 //функция при отведении указателя мыши от кнопки
+        let promptButton = document.getElementById(`button${number}`);                  //получаем доступ к элементу с нужным id (кнопка)
+        let styleButton = getComputedStyle(promptButton);                               //обращаемся к стилям кнопки
+        let findingTheButton = +styleButton.top.replace(/[^\d]/g, '')                   //находим расстояние от верха родительского блока до кнопки    
+
+        let footnote = document.getElementById(`pointer`);                              //получаем доступ к элементу с нужным id (сноска)
+        let stylePointer = getComputedStyle(footnote);                                  //обращаемся к стилям сноски
+        let aHintAppears = document.getElementById(`text${number}`);                    //получаем доступ к элементу с нужным id (подсказка)
+        aHintAppears.style = `top: ${findingTheButton}px;`;                             //меняем стиль подсказки
+        footnote.style = `bottom: -10px;`
+    }
+
+    
+</script>
+
+<!-- задание 7 -->
+<h3>
+    Задание 7 <br>
+    Создать html-страницу с деревом вложенных директорий. При клике на элемент списка, он должен сворачиваться или
+    разворачиваться. При наведении на элемент, шрифт должен становится жирным (с помощью CSS)
+</h3>
+<ul class="pc_table">
+    <li><span onclick="directorySelection(event, 0)" class="bold">this PC</span>
+        <ul class="hiddenDirectories" id="myComp" >
+            <li><span onclick="directorySelection(event, 1)" class="bold">local Disc C</span>
+                <ul class="hiddenDirectories" id="discC">
+                    <li class="bold">Program files</li>
+                    <li class="bold">Users</li>
+                    <li class="bold">Windows</li>
+                </ul>
+            </li>
+            <li><span onclick="directorySelection(event, 2)" class="bold">local Disc D</span> 
+                <ul class="hiddenDirectories" id="discD">
+                    <li class="bold">New folder</li>
+                    <li class="bold">New folder</li>
+                    <li class="bold">New folder</li>
+                </ul>
+            </li>
+            <li><span onclick="directorySelection(event, 3)" class="bold">local Disc E</span>
+                <ul class="hiddenDirectories" id="discE">
+                    <li class="bold">New folder</li>
+                    <li class="bold">New folder</li>
+                    <li class="bold">New folder</li>
+                </ul>
+            </li>
+
+        </ul>
+    </li>
+</ul>
+
+<script>
+    function directorySelection(e, num) {
+        let taskSevenId = ["myComp", "discC", "discD", "discE"];                //создаем массив, хранящий id
+        let listItem = document.getElementById(taskSevenId[`${num}`]);          //получаем доступ к элементу с нужным id
+        let style = getComputedStyle(listItem);                                 //обращаемся к стилям найденого элемента
+                                                                                //проверяем открыта или закрыта директория
+        if (style.display == "none") {                                          //если закрыта, открываем
+            listItem.style = `display: block;`;
+        } else if (style.display == "block") {
+            listItem.style = `display: none;`;                                  //если открыта, закрываем
+        }                        
+    }     
+</script>
+
+<!-- задание 8 -->
+<h3>
+    Задание 8 <br>
+    Создать html-страницу с блоком текста в рамочке. Реализовать возможность изменять размер блока, если зажать
+    мышку в правом нижнем углу и тянуть ее дальше.
+</h3>
+<div class="box">
+    <div id="framedText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita sint facilis tempora cupiditate. Provident magni debitis dolores architecto rerum. Beatae doloremque possimus quae! Autem reiciendis, sunt sequi nostrum amet reprehenderit.
+        <div id="triangle"></div>
+    </div>
+</div>
+<script>
+    let resize = false;                                                 //создаем переменную, содержащую информацию: нажата ли кнопка мыши(изначально - не нажата)
+    triangle.addEventListener("mousedown",function(){ resize = true })	//при нажатии кнопки мыши меняем значение переменной resize на true
+    document.addEventListener("mouseup",function(){ resize = false })	//при отпускании кнопки мыши меняем значение переменной resize на false
+    document.addEventListener("mousemove",function(e){ 					//функция движения мыши
+        if(resize){                                                     //если resize == true
+            framedText.style.width = (e.pageX - 120) + "px";            //меняем стили height и width в соответствии с координатой курсора мыши
+	        framedText.style.height  = (e.pageY - 1800) + "px";
+        }
+	})	
+</script>
+   </body>
+</html>

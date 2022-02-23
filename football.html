@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pole{
+            width: 100vw;
+            height: 100vh;
+            background-color: green;
+            position: relative;
+        }
+        #boll{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image:url(icons8-футбольный-мяч-100.png);
+            position: absolute;
+            transition: 0.3s;
+        }
+
+    </style>
+</head>
+<body id="pole" onclick="footBoll(event)">
+<!-- Задание 3
+Создать html-страницу с футбольным полем, которое занимает всю ширину и высоту экрана, и мячом размером 100 на 100
+пикселей.
+Сделать так, чтобы при клике мышкой по полю, мяч плавно перемещался на место клика. Учтите: необходимо, чтобы центр
+мяча останавливался именно там, где был совершен клик мышкой. Также предусмотрите, чтобы мяч не выходил за границы поля. -->
+    <div id="boll">
+    </div>
+
+    <script>
+        function footBoll(e){            
+            boll.style.left=e.pageX-50+'px'; 
+            boll.style.top =e.pageY-50+'px';
+            // console.log(boll.style.left + '  x');
+            // console.log(boll.style.top + '  y');
+        }
+    </script>    
+    
+</body>
+</html>
